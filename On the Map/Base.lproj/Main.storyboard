@@ -35,7 +35,15 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xL-0v-pix">
                                 <rect key="frame" x="67" y="389" width="240" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.31518140439999998" green="0.68989342450000002" blue="0.87453550099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbj-jg-djb">
                                 <rect key="frame" x="65" y="427" width="244" height="21"/>
@@ -48,14 +56,12 @@
                         <constraints>
                             <constraint firstItem="e39-l4-Hvf" firstAttribute="top" secondItem="AKt-oV-KKA" secondAttribute="bottom" constant="8" id="DZt-H5-SxH"/>
                             <constraint firstItem="e39-l4-Hvf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="KBc-qJ-BxX"/>
-                            <constraint firstItem="0xL-0v-pix" firstAttribute="top" secondItem="e39-l4-Hvf" secondAttribute="bottom" constant="8" id="LuX-5K-mLF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AKt-oV-KKA" secondAttribute="trailing" constant="68" id="Rqo-q9-Deo"/>
                             <constraint firstItem="FyK-9c-1ut" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="199" id="Tpp-4w-TU9"/>
                             <constraint firstItem="hbj-jg-djb" firstAttribute="top" secondItem="0xL-0v-pix" secondAttribute="bottom" constant="8" id="Xmj-hz-UCQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0xL-0v-pix" secondAttribute="trailing" constant="68" id="Xto-89-UGa"/>
                             <constraint firstItem="AKt-oV-KKA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="YI9-C8-e9Y"/>
                             <constraint firstItem="0xL-0v-pix" firstAttribute="top" secondItem="e39-l4-Hvf" secondAttribute="bottom" constant="8" id="a0g-1H-flm"/>
-                            <constraint firstItem="AKt-oV-KKA" firstAttribute="top" secondItem="FyK-9c-1ut" secondAttribute="bottom" constant="32" id="clH-AA-IDH"/>
                             <constraint firstItem="0xL-0v-pix" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="dqN-f8-H6C"/>
                             <constraint firstItem="hbj-jg-djb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="65" id="ieC-FV-yRG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hbj-jg-djb" secondAttribute="trailing" constant="66" id="jjf-pk-uE8"/>
@@ -63,7 +69,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FyK-9c-1ut" secondAttribute="trailing" constant="68" id="rtE-s8-3nD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hbj-jg-djb" secondAttribute="bottom" constant="219" id="tKi-EB-8Te"/>
                             <constraint firstItem="FyK-9c-1ut" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="uPy-qy-19p"/>
-                            <constraint firstItem="AKt-oV-KKA" firstAttribute="top" secondItem="FyK-9c-1ut" secondAttribute="bottom" constant="32" id="vz0-jg-LLd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
