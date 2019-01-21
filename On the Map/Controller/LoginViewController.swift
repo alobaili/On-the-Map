@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
 
 }
 
+
+// MARK: Text Field Delegate
 extension LoginViewController: UITextFieldDelegate {
     
     // When return is pressed, move to the next text field
@@ -33,4 +35,3 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
 }
-
