@@ -13,10 +13,22 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    var parseClient: ParseClient!
+    var udacityClient: UdacityClient!
+    
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    // MARK: Login
+    private func completeLogin() {
+        let controller = storyboard!.instantiateViewController(withIdentifier: "UITabBarController") as! UITabBarController
+        
+        present(controller, animated: true, completion: nil)
     }
 
 
