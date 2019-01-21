@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+// MARK: ParseClient: NSObject
+
+class ParseClient: NSObject {
+    
+    // MARK: Properties
+    
+    // Shared session
+    var session = URLSession.shared
+}
