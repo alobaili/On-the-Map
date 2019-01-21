@@ -10,14 +10,27 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    // When return is pressed, move to the next text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+        return true
+    }
 }
 

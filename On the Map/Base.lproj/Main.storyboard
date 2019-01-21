@@ -28,13 +28,13 @@
                                 <rect key="frame" x="67" y="300" width="240" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e39-l4-Hvf" userLabel="Password Text Field">
                                 <rect key="frame" x="67" y="338" width="240" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xL-0v-pix">
                                 <rect key="frame" x="67" y="376" width="240" height="30"/>
@@ -76,8 +76,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="password" destination="e39-l4-Hvf" id="xcj-PR-aVp"/>
-                        <outlet property="username" destination="AKt-oV-KKA" id="aAz-dD-19c"/>
+                        <outlet property="passwordTextField" destination="e39-l4-Hvf" id="SJt-mR-3jK"/>
+                        <outlet property="usernameTextField" destination="AKt-oV-KKA" id="CL5-t0-YeF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
