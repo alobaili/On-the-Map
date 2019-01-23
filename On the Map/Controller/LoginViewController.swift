@@ -39,6 +39,18 @@ class LoginViewController: UIViewController {
                 return
             }))
             self.present(alert, animated: true, completion: nil)
+        } else { // we know now that username and password is not empty
+            let jsonBody = UdacitySessionBody(udacity: Udacity(username: username!, password: password!))
+            
+            UdacityClient.sharedInstance().authenticateWithViewController(self) { (success, errorString) in
+                performUIUpdatesOnMain{
+                    if success {
+                        self.completeLogin()
+                    } else {
+                        self.displayError(errorString)
+                    }
+                }
+            }
         }
         
     }

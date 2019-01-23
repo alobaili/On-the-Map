@@ -17,5 +17,17 @@ class UdacityClient: NSObject {
     // Shared session
     var session = URLSession.shared
     
+    // Authentication state
+    var sessionID : String? = nil
+    var userID : String? = nil
+    var nickname : String? = nil
     
+    // MARK: Shared Instance
+    
+    class func sharedInstance() -> UdacityClient {
+        struct Singleton {
+            static var sharedInstance = UdacityClient()
+        }
+        return Singleton.sharedInstance
+    }
 }
