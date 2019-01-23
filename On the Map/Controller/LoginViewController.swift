@@ -68,6 +68,13 @@ class LoginViewController: UIViewController {
         
         present(controller, animated: true, completion: nil)
     }
+    
+    // MARK: Display error
+    private func displayError(_ errorString: String?) {
+        if let errorString = errorString {
+            print(errorString) // just print it in the console for now
+        }
+    }
 
 
 }
