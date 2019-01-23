@@ -19,6 +19,7 @@
 		4B3FD05721F625E4001B4535 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05621F625E4001B4535 /* UdacityConvenience.swift */; };
 		4B3FD05A21F628F1001B4535 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05921F628F1001B4535 /* MapViewController.swift */; };
 		4B3FD05C21F62A6A001B4535 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05B21F62A6A001B4535 /* TableViewController.swift */; };
+		4B3FD06021F8DC61001B4535 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4B3FD05621F625E4001B4535 /* UdacityConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		4B3FD05921F628F1001B4535 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4B3FD05B21F62A6A001B4535 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				4B3FD04D21F6253B001B4535 /* Clients */,
+				4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				4B3FD05721F625E4001B4535 /* UdacityConvenience.swift in Sources */,
 				4B3FD04B21F6186B001B4535 /* ParseConstants.swift in Sources */,
 				4B3FD05C21F62A6A001B4535 /* TableViewController.swift in Sources */,
+				4B3FD06021F8DC61001B4535 /* StudentLocation.swift in Sources */,
 				4B3FD05A21F628F1001B4535 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
