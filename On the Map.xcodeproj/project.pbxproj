@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B09887921F8F53C00F88ECB /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09887821F8F53C00F88ECB /* UdacityUser.swift */; };
 		4B3FD03921F3489A001B4535 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD03821F3489A001B4535 /* AppDelegate.swift */; };
 		4B3FD03B21F3489A001B4535 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD03A21F3489A001B4535 /* LoginViewController.swift */; };
 		4B3FD03E21F3489A001B4535 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FD03C21F3489A001B4535 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B09887821F8F53C00F88ECB /* UdacityUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		4B3FD03521F3489A001B4535 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3FD03821F3489A001B4535 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B3FD03A21F3489A001B4535 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				4B3FD04D21F6253B001B4535 /* Clients */,
 				4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */,
+				4B09887821F8F53C00F88ECB /* UdacityUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B09887921F8F53C00F88ECB /* UdacityUser.swift in Sources */,
 				4B3FD05321F625A1001B4535 /* UdacityClient.swift in Sources */,
 				4B3FD05521F625D3001B4535 /* ParseConvenience.swift in Sources */,
 				4B3FD03B21F3489A001B4535 /* LoginViewController.swift in Sources */,
