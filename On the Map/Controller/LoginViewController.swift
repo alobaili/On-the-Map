@@ -29,6 +29,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginPressed(_ sender: Any) {
         
+        let username = usernameTextField.text
+        let password = passwordTextField.text
+        
+        // Check if username and password is empty
+        if (username!.isEmpty || password!.isEmpty) {
+            let alert = UIAlertController(title: "Required field", message: "Please fill both the username and password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                return
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
         
     }
     
