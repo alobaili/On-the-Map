@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class LoginViewController: UIViewController {
 
@@ -22,6 +23,20 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func loginPressed(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func signupPressed(_ sender: Any) {
+        let url = URL(string: "https://www.udacity.com/account/auth#!/signup")
+        guard let newUrl = url else {return}
+        let svc = SFSafariViewController(url: newUrl)
+        present(svc, animated: true, completion: nil)
     }
     
     // MARK: Login

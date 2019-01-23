@@ -22,3 +22,7 @@ struct StudentLocation : Codable {
     let updatedAt : String?
     
 }
+
+struct StudentLocations : Codable {
+    let studentLocations : [StudentLocation]?
+}

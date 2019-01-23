@@ -16,4 +16,6 @@ class UdacityClient: NSObject {
     
     // Shared session
     var session = URLSession.shared
+    
+    
 }

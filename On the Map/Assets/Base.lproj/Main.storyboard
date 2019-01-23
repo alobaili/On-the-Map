@@ -47,6 +47,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="96N-XX-si3"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-a0-0XR">
                                 <rect key="frame" x="70" y="450" width="276" height="30"/>
@@ -60,6 +63,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-1A-8Mf">
                                         <rect key="frame" x="183" y="0.0" width="93" height="30"/>
                                         <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signupPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bdP-Na-SwA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
