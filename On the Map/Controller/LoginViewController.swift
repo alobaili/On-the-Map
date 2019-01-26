@@ -39,7 +39,6 @@ class LoginViewController: UIViewController {
         } else { // we know now that username and password is not empty
             API.shared.login(username: username!, password: password!) { (error) in
                 guard error == nil else {
-                    print(error)
                     return
                 }
                 self.completeLogin()
