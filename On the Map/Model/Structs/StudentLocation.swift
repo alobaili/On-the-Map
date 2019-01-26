@@ -9,7 +9,6 @@
 import Foundation
 
 struct StudentLocation : Codable {
-    
     let createdAt : String?
     let firstName : String?
     let lastName : String?
@@ -18,11 +17,6 @@ struct StudentLocation : Codable {
     let mapString : String?
     let mediaURL : String?
     let objectId : String?
-    let uniqueKey : String?
+    let uniqueKey : String? = API.shared.key
     let updatedAt : String?
-    
-}
-
-struct StudentLocations : Codable {
-    let studentLocations : [StudentLocation]?
 }

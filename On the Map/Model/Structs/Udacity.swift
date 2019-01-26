@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct UdacitySessionBody : Codable {
-    let udacity : Udacity
-}
-
 struct Udacity : Codable {
     let username: String
     let password: String

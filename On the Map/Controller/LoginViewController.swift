@@ -14,9 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var parseClient: ParseClient!
-    var udacityClient: UdacityClient!
-    
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -40,19 +37,14 @@ class LoginViewController: UIViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         } else { // we know now that username and password is not empty
-            let jsonBody = UdacitySessionBody(udacity: Udacity(username: username!, password: password!))
-            
-            UdacityClient.sharedInstance().authenticateWithViewController(self) { (success, errorString) in
-                performUIUpdatesOnMain{
-                    if success {
-                        self.completeLogin()
-                    } else {
-                        self.displayError(errorString)
-                    }
+            API.shared.login(username: username!, password: password!) { (error) in
+                guard error == nil else {
+                    print(error)
+                    return
                 }
+                self.completeLogin()
             }
         }
-        
     }
     
     @IBAction func signupPressed(_ sender: Any) {
@@ -64,9 +56,11 @@ class LoginViewController: UIViewController {
     
     // MARK: Login
     private func completeLogin() {
-        let controller = storyboard!.instantiateViewController(withIdentifier: "UITabBarController") as! UITabBarController
-        
-        present(controller, animated: true, completion: nil)
+        performUIUpdatesOnMain {
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: "UITabBarController") as! UITabBarController
+            
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
     // MARK: Display error
