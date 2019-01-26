@@ -6,7 +6,7 @@
 //  Copyright © 2019 Abdulaziz Alobaili. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class API {
     static let shared = API()
@@ -26,11 +26,11 @@ class API {
             do {
                 let newData = data?.subdata(in: 5..<data!.count)
                 let data = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments)  as? [String: Any]
-                let sessionDict = data?["session"] as? [String: Any]
-                let accountDict = data?["account"] as? [String: Any]
-                self.key = accountDict?["key"] as? String ?? ""
+                let sessionDictionary = data?["session"] as? [String: Any]
+                let accountDictionary = data?["account"] as? [String: Any]
+                self.key = accountDictionary?["key"] as? String ?? ""
                 print(self.key)
-                self.id = sessionDict?["id"] as? String ?? ""
+                self.id = sessionDictionary?["id"] as? String ?? ""
                 completion(nil)
             } catch {
                 completion("couldn't serialize the object")
