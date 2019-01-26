@@ -18,7 +18,7 @@ class API {
     func login(username: String, password: String, completion: @escaping (_ error: String?) -> Void) {
         let params = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
         let url = "https://onthemap-api.udacity.com/v1/session"
-        request(url: url, method: "POST", parameters: params) { (status, data) in
+        request(url: url, method: "POST", parameters: params) { (status, data, error) in
             guard status else {
                 completion("incorrect username or password")
                 return
@@ -45,7 +45,7 @@ class API {
     func getStudentLocations(limit: Int = 100, skip: Int = 0, orderBy: String = "updatedAt", completion: @escaping ([StudentLocation]?) -> Void) {
         let url = "https://parse.udacity.com/parse/classes/StudentLocation?limit=\(limit)&skip=\(skip)&order=\(orderBy)"
         
-            request(url: url, method: "GET") { (status, data) in
+            request(url: url, method: "GET") { (status, data, error) in
                 guard status else {
                     completion(nil)
                     return
@@ -61,7 +61,7 @@ class API {
     
     func getUserInfo(completion: @escaping (_ status: Bool) -> Void) {
         let url = "https://onthemap-api.udacity.com/v1/\(self.key)"
-        request(url: url, method: "GET") { (status, data) in
+        request(url: url, method: "GET") { (status, data, error) in
             guard status else {
                 return
             }
@@ -84,7 +84,7 @@ class API {
         } catch {
             print(error)
         }
-        request(url: url, method: "POST", parameters: params) { (status, data) in
+        request(url: url, method: "POST", parameters: params) { (status, data, error) in
             guard status else {
                 completion(false)
                 return
@@ -100,7 +100,7 @@ class API {
         }
     }
     
-    func request(url: String, method: String, parameters: Data? = nil, completion: @escaping (_ status: Bool, _ data: Data?) -> Void) {
+    func request(url: String, method: String, parameters: Data? = nil, completion: @escaping (_ status: Bool, _ data: Data?, _ error: String?) -> Void) {
         
         var request = URLRequest(url: URL(string: url)!)
         
@@ -115,10 +115,10 @@ class API {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let response = response as? HTTPURLResponse,
                 let data = data, (response.statusCode >= 200 && response.statusCode < 300) else {
-                    completion(false, nil)
+                    completion(false, nil, "Network error")
                     return
             }
-            completion(true, data)
+            completion(true, data, nil)
         }.resume()
     }
 }

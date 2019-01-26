@@ -39,6 +39,13 @@ class LoginViewController: UIViewController {
         } else { // we know now that username and password is not empty
             API.shared.login(username: username!, password: password!) { (error) in
                 guard error == nil else {
+                    performUIUpdatesOnMain {
+                        let alert = UIAlertController(title: "Couldn't Login", message: error, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                            return
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                     return
                 }
                 self.completeLogin()
