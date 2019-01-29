@@ -1,5 +1,5 @@
 //
-//  StudentLocations.swift
+//  StudentLocationResult.swift
 //  On the Map
 //
 //  Created by Abdulaziz AlObaili on 26/01/2019.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct StudentLocations: Codable {
-    var studentLocations: [StudentLocation]?
+struct StudentLocationResult: Codable {
+    var results: [StudentLocation]?
 }

@@ -42,20 +42,20 @@ class API {
         
     }
     
-    func getStudentLocations(limit: Int = 100, skip: Int = 0, orderBy: String = "updatedAt", completion: @escaping (StudentLocations?) -> Void) {
+    func getLocations(limit: Int = 100, skip: Int = 0, orderBy: String = "updatedAt", completion: @escaping ([StudentLocation]?) -> Void) {
         let url = "https://parse.udacity.com/parse/classes/StudentLocation?limit=\(limit)&skip=\(skip)&order=-\(orderBy)"
         
-            request(url: url, method: "GET") { (status, data, error) in
-                guard status else {
-                    completion(nil)
-                    return
-                }
-                do {
-                    let location = try JSONDecoder().decode(StudentLocations.self, from: data!)
-                    completion(location)
-                } catch {
-                    completion(nil)
-                }
+        request(url: url, method: "GET") { (status, data, error) in
+            guard status else {
+                completion(nil)
+                return
+            }
+            do {
+                let location = try JSONDecoder().decode(StudentLocationResult.self, from: data!)
+                completion(location.results)
+            } catch {
+                completion(nil)
+            }
         }
     }
     

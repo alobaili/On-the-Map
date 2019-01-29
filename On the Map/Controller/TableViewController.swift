@@ -20,7 +20,8 @@ class TableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        API.shared.getStudentLocations { (locations) in
+        API.shared.getLocations { (locations) in
+            //print(locations as Any)
         }
     }
     
