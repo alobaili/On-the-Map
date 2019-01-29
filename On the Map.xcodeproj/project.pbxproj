@@ -22,6 +22,7 @@
 		4B3FD05A21F628F1001B4535 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05921F628F1001B4535 /* MapViewController.swift */; };
 		4B3FD05C21F62A6A001B4535 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05B21F62A6A001B4535 /* TableViewController.swift */; };
 		4B3FD06021F8DC61001B4535 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */; };
+		4B6DD86622004F050002EFDD /* StudentLocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6DD86522004F050002EFDD /* StudentLocationsArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		4B3FD05921F628F1001B4535 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4B3FD05B21F62A6A001B4535 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		4B6DD86522004F050002EFDD /* StudentLocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				4B09888021FC89B800F88ECB /* Structs */,
 				4B3FD04D21F6253B001B4535 /* Constants */,
 				4B09887E21FC49FE00F88ECB /* API.swift */,
+				4B6DD86522004F050002EFDD /* StudentLocationsArray.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B6DD86622004F050002EFDD /* StudentLocationsArray.swift in Sources */,
 				4B09888921FCB8CB00F88ECB /* TableViewCell.swift in Sources */,
 				4B09887921F8F53C00F88ECB /* Udacity.swift in Sources */,
 				4B3FD03B21F3489A001B4535 /* LoginViewController.swift in Sources */,

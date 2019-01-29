@@ -11,8 +11,8 @@ import SafariServices
 
 class TableViewController: UITableViewController {
     
-    var studentLocations: [StudentLocation] = []
-    
+    var studentLocations = StudentLocationsArray.shared.studentLocationsArray
+        
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,7 +21,11 @@ class TableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         API.shared.getLocations { (locations) in
-            //print(locations as Any)
+            self.studentLocations = locations!
+            
+            performUIUpdatesOnMain {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -32,14 +36,14 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
         
-        
-        cell.fillCell(studentLocation: studentLocations[indexPath.row])
+        cell.fillCell(studentLocation: studentLocations[indexPath.row] as! StudentLocation)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = URL(string: (studentLocations[indexPath.row].mediaURL)!)
+        let dataArray = studentLocations as! [StudentLocation]
+        let url = URL(string: (dataArray[indexPath.row].mediaURL)!)
         guard let newUrl = url else {return}
         let svc = SFSafariViewController(url: newUrl)
         present(svc, animated: true, completion: nil)
@@ -48,4 +52,5 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 99.5
     }
+    
 }
