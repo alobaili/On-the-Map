@@ -12,7 +12,7 @@
 		4B09887D21F9028E00F88ECB /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09887C21F9028E00F88ECB /* UdacityConstants.swift */; };
 		4B09887F21FC49FE00F88ECB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09887E21FC49FE00F88ECB /* API.swift */; };
 		4B09888221FC89D400F88ECB /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09888121FC89D400F88ECB /* StudentLocations.swift */; };
-		4B09888421FC8A1200F88ECB /* StudentLocationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09888321FC8A1200F88ECB /* StudentLocationResult.swift */; };
+		4B09888921FCB8CB00F88ECB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09888821FCB8CB00F88ECB /* TableViewCell.swift */; };
 		4B3FD03921F3489A001B4535 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD03821F3489A001B4535 /* AppDelegate.swift */; };
 		4B3FD03B21F3489A001B4535 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD03A21F3489A001B4535 /* LoginViewController.swift */; };
 		4B3FD03E21F3489A001B4535 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B3FD03C21F3489A001B4535 /* Main.storyboard */; };
@@ -30,7 +30,7 @@
 		4B09887C21F9028E00F88ECB /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		4B09887E21FC49FE00F88ECB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4B09888121FC89D400F88ECB /* StudentLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
-		4B09888321FC8A1200F88ECB /* StudentLocationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResult.swift; sourceTree = "<group>"; };
+		4B09888821FCB8CB00F88ECB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		4B3FD03521F3489A001B4535 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3FD03821F3489A001B4535 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B3FD03A21F3489A001B4535 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -60,10 +60,17 @@
 			children = (
 				4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */,
 				4B09888121FC89D400F88ECB /* StudentLocations.swift */,
-				4B09888321FC8A1200F88ECB /* StudentLocationResult.swift */,
 				4B09887821F8F53C00F88ECB /* Udacity.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		4B09888721FCB8A600F88ECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4B09888821FCB8CB00F88ECB /* TableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4B3FD02C21F3489A001B4535 = {
@@ -85,6 +92,7 @@
 		4B3FD03721F3489A001B4535 /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
+				4B09888721FCB8A600F88ECB /* View */,
 				4B3FD05E21F63990001B4535 /* Supporting Files */,
 				4B3FD05D21F638E9001B4535 /* Assets */,
 				4B3FD05821F628D7001B4535 /* Controller */,
@@ -229,10 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B09888921FCB8CB00F88ECB /* TableViewCell.swift in Sources */,
 				4B09887921F8F53C00F88ECB /* Udacity.swift in Sources */,
 				4B3FD03B21F3489A001B4535 /* LoginViewController.swift in Sources */,
 				4B09887B21F8FD4A00F88ECB /* GCDBlackBox.swift in Sources */,
-				4B09888421FC8A1200F88ECB /* StudentLocationResult.swift in Sources */,
 				4B09888221FC89D400F88ECB /* StudentLocations.swift in Sources */,
 				4B3FD03921F3489A001B4535 /* AppDelegate.swift in Sources */,
 				4B09887F21FC49FE00F88ECB /* API.swift in Sources */,

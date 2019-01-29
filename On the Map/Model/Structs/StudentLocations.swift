@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct StudentLocations : Codable {
-    let studentLocations : [StudentLocation]?
+struct StudentLocations: Codable {
+    var studentLocations: [StudentLocation]?
 }

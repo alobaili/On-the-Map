@@ -29,7 +29,7 @@ class API {
                 let sessionDictionary = data?["session"] as? [String: Any]
                 let accountDictionary = data?["account"] as? [String: Any]
                 self.key = accountDictionary?["key"] as? String ?? ""
-                print(self.key)
+                //print(self.key)
                 self.id = sessionDictionary?["id"] as? String ?? ""
                 completion(nil)
             } catch {
@@ -42,8 +42,8 @@ class API {
         
     }
     
-    func getStudentLocations(limit: Int = 100, skip: Int = 0, orderBy: String = "updatedAt", completion: @escaping ([StudentLocation]?) -> Void) {
-        let url = "https://parse.udacity.com/parse/classes/StudentLocation?limit=\(limit)&skip=\(skip)&order=\(orderBy)"
+    func getStudentLocations(limit: Int = 100, skip: Int = 0, orderBy: String = "updatedAt", completion: @escaping (StudentLocations?) -> Void) {
+        let url = "https://parse.udacity.com/parse/classes/StudentLocation?limit=\(limit)&skip=\(skip)&order=-\(orderBy)"
         
             request(url: url, method: "GET") { (status, data, error) in
                 guard status else {
@@ -51,8 +51,8 @@ class API {
                     return
                 }
                 do {
-                    let location = try JSONDecoder().decode(StudentLocationResult.self, from: data!)
-                    completion(location.results)
+                    let location = try JSONDecoder().decode(StudentLocations.self, from: data!)
+                    completion(location)
                 } catch {
                     completion(nil)
                 }
@@ -68,7 +68,6 @@ class API {
             let newData = data?.subdata(in: 5..<data!.count)
             do {
                 let object = try JSONSerialization.jsonObject(with: newData!, options: [])
-                print(object)
                 completion(true)
             } catch {
                 completion(false)
@@ -91,7 +90,6 @@ class API {
             }
             do {
                 let data = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-                print(data)
                 completion(true)
             } catch {
                 print(error)

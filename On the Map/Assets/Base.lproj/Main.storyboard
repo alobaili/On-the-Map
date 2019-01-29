@@ -137,19 +137,50 @@
         <!--Table View Controller-->
         <scene sceneID="Fix-J5-zzF">
             <objects>
-                <tableViewController id="87r-TU-S4d" customClass="TableViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TableViewController" id="87r-TU-S4d" customClass="TableViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="F2G-dD-LLd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JnE-BR-mRD">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="JnE-BR-mRD" customClass="TableViewCell" customModule="On_the_Map" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JnE-BR-mRD" id="DNV-rH-ffO">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="Zbd-xm-ATu">
+                                            <rect key="frame" x="20" y="11" width="78" height="77.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfw-yt-0Pd">
+                                            <rect key="frame" x="106" y="19" width="45" height="21"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Media URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfM-pH-zDW">
+                                            <rect key="frame" x="106" y="60" width="83.5" height="21"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rfw-yt-0Pd" firstAttribute="leading" secondItem="Zbd-xm-ATu" secondAttribute="trailing" constant="8" id="3iO-qh-dNV"/>
+                                        <constraint firstItem="Zbd-xm-ATu" firstAttribute="leading" secondItem="DNV-rH-ffO" secondAttribute="leadingMargin" id="Gc1-oD-2PF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Zbd-xm-ATu" secondAttribute="trailing" constant="296" id="RNI-uN-MOG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ZfM-pH-zDW" secondAttribute="bottom" constant="8" id="Xvm-ms-S6U"/>
+                                        <constraint firstItem="Zbd-xm-ATu" firstAttribute="top" secondItem="DNV-rH-ffO" secondAttribute="topMargin" id="Ybe-dz-GbF"/>
+                                        <constraint firstItem="rfw-yt-0Pd" firstAttribute="top" secondItem="DNV-rH-ffO" secondAttribute="topMargin" constant="8" id="cQF-T3-2yD"/>
+                                        <constraint firstItem="Zbd-xm-ATu" firstAttribute="centerY" secondItem="DNV-rH-ffO" secondAttribute="centerY" id="hcN-ok-ACT"/>
+                                        <constraint firstItem="ZfM-pH-zDW" firstAttribute="leading" secondItem="Zbd-xm-ATu" secondAttribute="trailing" constant="8" id="oyw-Cg-zcP"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mediaURLLabel" destination="ZfM-pH-zDW" id="dua-Pn-fHN"/>
+                                    <outlet property="nameLabel" destination="rfw-yt-0Pd" id="niI-aI-1Rc"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -161,7 +192,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnT-4w-iSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2689" y="391"/>
+            <point key="canvasLocation" x="2688.4057971014495" y="390.40178571428572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gaF-UR-7Bt">
@@ -200,6 +231,7 @@
     <resources>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_pin" width="24" height="24"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>
