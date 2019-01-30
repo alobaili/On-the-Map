@@ -45,8 +45,13 @@ class TableViewController: UITableViewController {
         let dataArray = studentLocations as! [StudentLocation]
         let urlString = dataArray[indexPath.row].mediaURL
         
-        // check if the selected cell has a valid URL
+        // check if the selected cell has a valid URL (contains a full URL scheme). Otherwise, show an alert
         guard verifyURL(urlString: urlString) else {
+            let alert = UIAlertController(title: "Invalid URL", message: "The location you selected has an invalid URL", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                return
+            }))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         let url = URL(string: urlString!)
