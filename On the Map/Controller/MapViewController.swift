@@ -8,16 +8,18 @@
 
 import UIKit
 import MapKit
+import SafariServices
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     var studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
-    var studentAnnotations = [MKPointAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +28,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         API.shared.getLocations { (locations) in
             self.studentLocations = locations!
         }
+        
+        var studentAnnotations = [MKPointAnnotation]()
         
         
         for location in studentLocations where location.latitude != nil && location.longitude != nil {
@@ -45,13 +49,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotation.subtitle = mediaURL
             
             studentAnnotations.append(annotation)
+            
+            self.mapView.addAnnotations(studentAnnotations)
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.mapView.addAnnotations(studentAnnotations)
     }
     
     // MARK: - MKMapViewDelegate
@@ -77,10 +77,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!)
+            let urlString = view.annotation?.subtitle!
+            
+            guard verifyURL(urlString: urlString) else {
+                let alert = UIAlertController(title: "Invalid URL", message: "The location you selected has an invalid URL", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    return
+                }))
+                self.present(alert, animated: true, completion: nil)
+                return
             }
+            let url = URL(string: urlString!)
+            let svc = SFSafariViewController(url: url!)
+            present(svc, animated: true, completion: nil)
         }
     }
     
