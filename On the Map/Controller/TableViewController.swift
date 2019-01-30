@@ -43,14 +43,31 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataArray = studentLocations as! [StudentLocation]
-        let url = URL(string: (dataArray[indexPath.row].mediaURL)!)
-        guard let newUrl = url else {return}
-        let svc = SFSafariViewController(url: newUrl)
+        let urlString = dataArray[indexPath.row].mediaURL
+        
+        // check if the selected cell has a valid URL
+        guard verifyURL(urlString: urlString) else {
+            return
+        }
+        let url = URL(string: urlString!)
+        let svc = SFSafariViewController(url: url!)
         present(svc, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 99.5
+    }
+    
+    private func verifyURL(urlString: String?) -> Bool {
+        //Check for nil
+        if let urlString = urlString {
+            // create URL instance
+            if let url = URL(string: urlString) {
+                // check if the app can open the URL instance
+                return UIApplication.shared.canOpenURL(url)
+            }
+        }
+        return false
     }
     
 }
