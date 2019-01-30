@@ -54,6 +54,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    @IBAction func logoutPressed(_ sender: Any) {
+        API.shared.logout { (status) in
+            guard status else {
+                return
+            }
+            performUIUpdatesOnMain {
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                
+                self.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
     // MARK: - MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

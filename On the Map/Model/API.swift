@@ -29,7 +29,6 @@ class API {
                 let sessionDictionary = data?["session"] as? [String: Any]
                 let accountDictionary = data?["account"] as? [String: Any]
                 self.key = accountDictionary?["key"] as? String ?? ""
-                //print(self.key)
                 self.id = sessionDictionary?["id"] as? String ?? ""
                 completion(nil)
             } catch {
@@ -39,7 +38,15 @@ class API {
     }
     
     func logout(completion: @escaping (_ status: Bool) -> Void) {
+        let url = "https://onthemap-api.udacity.com/v1/session"
         
+        request(url: url, method: "DELETE") { (status, data, error) in
+            guard status else {
+                completion(false)
+                return
+            }
+            completion(true)
+        }
     }
     
     func getLocations(limit: Int = 100, skip: Int = 0, orderBy: String = "updatedAt", completion: @escaping ([StudentLocation]?) -> Void) {
@@ -102,10 +109,21 @@ class API {
         
         var request = URLRequest(url: URL(string: url)!)
         
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        if method == "DELETE" {
+            var xsrfCookie: HTTPCookie? = nil
+            let sharedCookieStorage = HTTPCookieStorage.shared
+            for cookie in sharedCookieStorage.cookies! {
+                if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            }
+            if let xsrfCookie = xsrfCookie {
+                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            }
+        } else {
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+            request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        }
         
         request.httpBody = parameters
         request.httpMethod = method

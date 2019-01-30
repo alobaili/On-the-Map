@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Login View Controller" customClass="LoginViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" userLabel="Login View Controller" customClass="LoginViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,13 +28,13 @@
                                 <rect key="frame" x="68" y="336" width="279" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e39-l4-Hvf" userLabel="Password Text Field">
                                 <rect key="frame" x="68" y="374" width="279" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xL-0v-pix">
                                 <rect key="frame" x="68" y="412" width="279" height="30"/>
@@ -189,7 +189,17 @@
                             <outlet property="delegate" destination="87r-TU-S4d" id="NgD-eH-Ire"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="y7L-cv-5RK"/>
+                    <navigationItem key="navigationItem" id="y7L-cv-5RK">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="3os-PY-auP">
+                            <connections>
+                                <action selector="logoutPressed:" destination="87r-TU-S4d" id="yAv-IW-Onj"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="icon_addpin" id="WUb-zA-ca5"/>
+                            <barButtonItem image="icon_refresh" id="Qp1-3R-LEm"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnT-4w-iSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,7 +243,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MtM-GV-Iuz"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WMN-BY-lvf"/>
+                    <navigationItem key="navigationItem" id="WMN-BY-lvf">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="Onw-ED-dMb">
+                            <connections>
+                                <action selector="logoutPressed:" destination="Xg5-NP-M7O" id="0QE-DS-Gnx"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="icon_addpin" id="V8U-ij-DPp"/>
+                            <barButtonItem image="icon_refresh" id="ehM-HG-mwF"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="1r5-T9-KcH" id="Hlm-8O-G7K"/>
                     </connections>
@@ -244,9 +264,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_addpin" width="24" height="24"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_pin" width="24" height="24"/>
+        <image name="icon_refresh" width="24" height="24"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>

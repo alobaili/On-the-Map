@@ -29,6 +29,20 @@ class TableViewController: UITableViewController {
         }
     }
     
+    @IBAction func logoutPressed(_ sender: Any) {
+        API.shared.logout { (status) in
+            guard status else {
+                return
+            }
+            performUIUpdatesOnMain {
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                
+                self.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentLocations.count
     }
