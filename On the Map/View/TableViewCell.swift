@@ -12,6 +12,7 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mediaURLLabel: UILabel!
+    @IBOutlet weak var locationIconImageView: UIImageView!
     
     func fillCell(studentLocation: StudentLocation) {
         if let frist = studentLocation.firstName , let last = studentLocation.lastName , let url = studentLocation.mediaURL {
