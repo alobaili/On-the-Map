@@ -22,6 +22,12 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        usernameTextField.becomeFirstResponder()
+    }
+    
     // MARK: Actions
     
     @IBAction func loginPressed(_ sender: Any) {
@@ -83,11 +89,16 @@ class LoginViewController: UIViewController {
 // MARK: Text Field Delegate
 extension LoginViewController: UITextFieldDelegate {
     
-    // When return is pressed, move to the next text field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // When return is pressed for username, move to the next text field
         if textField == usernameTextField {
             textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
+        }
+        // When return is pressed for password, call loginPressed
+        if textField == passwordTextField {
+            loginPressed((Any).self)
         }
         return true
     }

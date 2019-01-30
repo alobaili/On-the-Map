@@ -28,7 +28,7 @@
                                 <rect key="frame" x="68" y="336" width="279" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e39-l4-Hvf" userLabel="Password Text Field">
                                 <rect key="frame" x="68" y="374" width="279" height="30"/>
@@ -150,7 +150,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="Zbd-xm-ATu">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="Zbd-xm-ATu">
                                             <rect key="frame" x="20" y="11" width="78" height="77.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfw-yt-0Pd">
@@ -215,18 +215,32 @@
         <!--Map View Controller-->
         <scene sceneID="y6H-K8-gho">
             <objects>
-                <viewController id="Xg5-NP-M7O" customClass="MapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="Xg5-NP-M7O" customClass="MapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ADh-HE-WbW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1r5-T9-KcH">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1r5-T9-KcH" firstAttribute="leading" secondItem="MtM-GV-Iuz" secondAttribute="leading" id="7iv-Am-Kix"/>
+                            <constraint firstItem="1r5-T9-KcH" firstAttribute="bottom" secondItem="MtM-GV-Iuz" secondAttribute="bottom" id="YtT-bK-bPn"/>
+                            <constraint firstItem="1r5-T9-KcH" firstAttribute="top" secondItem="MtM-GV-Iuz" secondAttribute="top" id="cMh-Pa-Agh"/>
+                            <constraint firstItem="1r5-T9-KcH" firstAttribute="trailing" secondItem="MtM-GV-Iuz" secondAttribute="trailing" id="gvC-Mf-rKB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MtM-GV-Iuz"/>
                     </view>
                     <navigationItem key="navigationItem" id="WMN-BY-lvf"/>
+                    <connections>
+                        <outlet property="mapView" destination="1r5-T9-KcH" id="Hlm-8O-G7K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rT-Cf-dGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2690" y="-336"/>
+            <point key="canvasLocation" x="2689.8550724637685" y="-336.16071428571428"/>
         </scene>
     </scenes>
     <resources>
