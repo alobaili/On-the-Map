@@ -26,30 +26,40 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        reloadAnnotations()
+    }
+    
+    func reloadAnnotations() {
+        studentLocations.removeAll()
+        studentAnnotations.removeAll()
+        let currentAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(currentAnnotations)
         
         API.shared.getLocations { (locations) in
-            self.studentLocations = locations!
-        }
-        
-        for location in studentLocations where location.latitude != nil && location.longitude != nil {
+            self.studentLocations = locations! as [StudentLocation]
             
-            let lat = CLLocationDegrees(location.latitude!)
-            let long = CLLocationDegrees(location.longitude!)
+            for location in self.studentLocations where location.latitude != nil && location.longitude != nil {
+                
+                let lat = CLLocationDegrees(location.latitude!)
+                let long = CLLocationDegrees(location.longitude!)
+                
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                let firstName = location.firstName
+                let lastName = location.lastName
+                let mediaURL = location.mediaURL
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(String(describing: firstName)) \(String(describing: lastName))"
+                annotation.subtitle = mediaURL
+                
+                self.studentAnnotations.append(annotation)
+            }
             
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
-            let firstName = location.firstName!
-            let lastName = location.lastName!
-            let mediaURL = location.mediaURL
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(String(describing: firstName)) \(String(describing: lastName))"
-            annotation.subtitle = mediaURL
-            
-            studentAnnotations.append(annotation)
-            
-            self.mapView.addAnnotations(studentAnnotations)
+            performUIUpdatesOnMain {
+                self.mapView.addAnnotations(self.studentAnnotations)
+            }
         }
     }
     
@@ -67,41 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func refreshPressed(_ sender: Any) {
-        //clear the local and shared arrays and remove annotations
-        studentLocations.removeAll()
-        StudentLocationsArray.shared.studentLocationsArray.removeAll()
-        self.mapView.removeAnnotations(studentAnnotations)
-        
-        
-        API.shared.getLocations { (locations) in
-            
-            // update the shared array
-            StudentLocationsArray.shared.studentLocationsArray = locations!
-            
-            // update the local array in this VC
-            self.studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
-        }
-        
-        for location in studentLocations where location.latitude != nil && location.longitude != nil {
-            
-            let lat = CLLocationDegrees(location.latitude!)
-            let long = CLLocationDegrees(location.longitude!)
-            
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
-            let firstName = location.firstName!
-            let lastName = location.lastName!
-            let mediaURL = location.mediaURL
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(String(describing: firstName)) \(String(describing: lastName))"
-            annotation.subtitle = mediaURL
-            
-            studentAnnotations.append(annotation)
-            
-            self.mapView.addAnnotations(studentAnnotations)
-        }
+        reloadAnnotations()
     }
     
     
