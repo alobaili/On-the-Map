@@ -278,7 +278,11 @@
                         <viewLayoutGuide key="safeArea" id="Tg5-4O-GZ5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="pbB-cS-HKn">
-                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="rql-L4-8w1"/>
+                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="rql-L4-8w1">
+                            <connections>
+                                <action selector="cancelPressed:" destination="Z60-cA-GjO" id="day-Cf-iEp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="locationTextField" destination="d4U-Wf-42X" id="etn-aI-0qi"/>

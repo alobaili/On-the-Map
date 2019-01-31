@@ -60,6 +60,11 @@ class AddLocationViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelPressed(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toConfirmLocation" {
             let viewController = segue.destination as! ConfirmLocationViewController
