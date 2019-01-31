@@ -217,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="2688.4057971014495" y="390.40178571428572"/>
         </scene>
-        <!--Add Location View Controller-->
+        <!--Add Location-->
         <scene sceneID="4hs-Li-xPS">
             <objects>
                 <viewController storyboardIdentifier="AddLocationViewController" id="Z60-cA-GjO" customClass="AddLocationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
@@ -277,9 +277,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tg5-4O-GZ5"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Location" id="pbB-cS-HKn">
+                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="rql-L4-8w1"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="locationTectField" destination="d4U-Wf-42X" id="5Db-sK-Z6F"/>
+                        <outlet property="locationTextField" destination="d4U-Wf-42X" id="etn-aI-0qi"/>
                         <outlet property="mediaURLTextField" destination="Iju-Mp-0eh" id="oP5-t3-gBv"/>
+                        <segue destination="eNd-QA-24C" kind="show" identifier="toConfirmLocation" id="HPE-0A-jPH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RsB-bQ-J3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -350,6 +354,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rT-Cf-dGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2689.8550724637685" y="-336.16071428571428"/>
+        </scene>
+        <!--Confirm Location View Controller-->
+        <scene sceneID="am0-Dx-sg5">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmLocationViewController" id="eNd-QA-24C" customClass="ConfirmLocationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ToI-ml-OUl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="LjU-Kf-6Pa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2U2-9N-CY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4349" y="27"/>
         </scene>
     </scenes>
     <resources>
