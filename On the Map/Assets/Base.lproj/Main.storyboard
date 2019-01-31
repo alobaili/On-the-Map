@@ -154,27 +154,31 @@
                                             <rect key="frame" x="20" y="11" width="78" height="77.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfw-yt-0Pd">
-                                            <rect key="frame" x="106" y="19" width="45" height="21"/>
+                                            <rect key="frame" x="106" y="19" width="288" height="21"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Media URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfM-pH-zDW">
-                                            <rect key="frame" x="106" y="60" width="83.5" height="21"/>
+                                            <rect key="frame" x="106" y="60" width="288" height="21"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="rfw-yt-0Pd" firstAttribute="leading" secondItem="Zbd-xm-ATu" secondAttribute="trailing" constant="8" id="3iO-qh-dNV"/>
+                                        <constraint firstItem="rfw-yt-0Pd" firstAttribute="trailing" secondItem="DNV-rH-ffO" secondAttribute="trailingMargin" id="2Kg-xB-7pR"/>
+                                        <constraint firstItem="rfw-yt-0Pd" firstAttribute="top" secondItem="DNV-rH-ffO" secondAttribute="topMargin" constant="8" id="9Yr-sY-KUF"/>
                                         <constraint firstItem="Zbd-xm-ATu" firstAttribute="leading" secondItem="DNV-rH-ffO" secondAttribute="leadingMargin" id="Gc1-oD-2PF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Zbd-xm-ATu" secondAttribute="trailing" constant="296" id="RNI-uN-MOG"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ZfM-pH-zDW" secondAttribute="bottom" constant="8" id="Xvm-ms-S6U"/>
+                                        <constraint firstItem="ZfM-pH-zDW" firstAttribute="leading" secondItem="rfw-yt-0Pd" secondAttribute="leading" id="T3L-gn-OFc"/>
                                         <constraint firstItem="Zbd-xm-ATu" firstAttribute="top" secondItem="DNV-rH-ffO" secondAttribute="topMargin" id="Ybe-dz-GbF"/>
-                                        <constraint firstItem="rfw-yt-0Pd" firstAttribute="top" secondItem="DNV-rH-ffO" secondAttribute="topMargin" constant="8" id="cQF-T3-2yD"/>
+                                        <constraint firstItem="ZfM-pH-zDW" firstAttribute="trailing" secondItem="rfw-yt-0Pd" secondAttribute="trailing" id="bDO-nL-oLr"/>
+                                        <constraint firstItem="ZfM-pH-zDW" firstAttribute="top" secondItem="DNV-rH-ffO" secondAttribute="top" constant="60" id="cs1-uR-Yvp"/>
                                         <constraint firstItem="Zbd-xm-ATu" firstAttribute="centerY" secondItem="DNV-rH-ffO" secondAttribute="centerY" id="hcN-ok-ACT"/>
-                                        <constraint firstItem="ZfM-pH-zDW" firstAttribute="leading" secondItem="Zbd-xm-ATu" secondAttribute="trailing" constant="8" id="oyw-Cg-zcP"/>
+                                        <constraint firstItem="ZfM-pH-zDW" firstAttribute="leading" secondItem="Zbd-xm-ATu" secondAttribute="trailing" constant="8" symbolic="YES" id="nYg-ta-GAj"/>
+                                        <constraint firstItem="ZfM-pH-zDW" firstAttribute="top" secondItem="rfw-yt-0Pd" secondAttribute="bottom" constant="20" id="pju-J0-lEt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ZfM-pH-zDW" secondAttribute="bottom" constant="8" id="zvV-ET-CFD"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -196,8 +200,12 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="icon_addpin" id="WUb-zA-ca5"/>
-                            <barButtonItem image="icon_refresh" id="Qp1-3R-LEm"/>
+                            <barButtonItem title="Add Pin" image="icon_addpin" id="WUb-zA-ca5"/>
+                            <barButtonItem title="Refresh" image="icon_refresh" id="Qp1-3R-LEm">
+                                <connections>
+                                    <action selector="refreshPressed:" destination="87r-TU-S4d" id="eDV-wl-4jv"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
@@ -250,8 +258,12 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="icon_addpin" id="V8U-ij-DPp"/>
-                            <barButtonItem image="icon_refresh" id="ehM-HG-mwF"/>
+                            <barButtonItem title="Add Pin" image="icon_addpin" id="V8U-ij-DPp"/>
+                            <barButtonItem title="Refresh" image="icon_refresh" id="ehM-HG-mwF">
+                                <connections>
+                                    <action selector="refreshPressed:" destination="Xg5-NP-M7O" id="OC6-bF-C2D"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>

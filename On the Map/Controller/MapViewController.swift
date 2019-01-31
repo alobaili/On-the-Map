@@ -13,6 +13,8 @@ import SafariServices
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     var studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
+    var studentAnnotations = [MKPointAnnotation]()
+
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -28,9 +30,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         API.shared.getLocations { (locations) in
             self.studentLocations = locations!
         }
-        
-        var studentAnnotations = [MKPointAnnotation]()
-        
         
         for location in studentLocations where location.latitude != nil && location.longitude != nil {
             
@@ -66,6 +65,46 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    @IBAction func refreshPressed(_ sender: Any) {
+        //clear the local and shared arrays and remove annotations
+        studentLocations.removeAll()
+        StudentLocationsArray.shared.studentLocationsArray.removeAll()
+        self.mapView.removeAnnotations(studentAnnotations)
+        
+        
+        API.shared.getLocations { (locations) in
+            
+            // update the shared array
+            StudentLocationsArray.shared.studentLocationsArray = locations!
+            
+            // update the local array in this VC
+            self.studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
+        }
+        
+        for location in studentLocations where location.latitude != nil && location.longitude != nil {
+            
+            let lat = CLLocationDegrees(location.latitude!)
+            let long = CLLocationDegrees(location.longitude!)
+            
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            
+            let firstName = location.firstName!
+            let lastName = location.lastName!
+            let mediaURL = location.mediaURL
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(String(describing: firstName)) \(String(describing: lastName))"
+            annotation.subtitle = mediaURL
+            
+            studentAnnotations.append(annotation)
+            
+            self.mapView.addAnnotations(studentAnnotations)
+        }
+    }
+    
+    
     // MARK: - MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

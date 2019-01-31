@@ -11,7 +11,7 @@ import SafariServices
 
 class TableViewController: UITableViewController {
     
-    var studentLocations = StudentLocationsArray.shared.studentLocationsArray
+    var studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,27 @@ class TableViewController: UITableViewController {
         }
     }
     
+    @IBAction func refreshPressed(_ sender: Any) {
+        
+        //clear the local and shared arrays
+        studentLocations.removeAll()
+        StudentLocationsArray.shared.studentLocationsArray.removeAll()
+        
+        
+        API.shared.getLocations { (locations) in
+            
+            // update the shared array
+            StudentLocationsArray.shared.studentLocationsArray = locations!
+            
+            // update the local array in this VC
+            self.studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
+            
+            // reload the table data
+            performUIUpdatesOnMain {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentLocations.count
@@ -50,13 +71,13 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
         
-        cell.fillCell(studentLocation: studentLocations[indexPath.row] as! StudentLocation)
+        cell.fillCell(studentLocation: studentLocations[indexPath.row])
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dataArray = studentLocations as! [StudentLocation]
+        let dataArray = studentLocations
         let urlString = dataArray[indexPath.row].mediaURL
         
         // check if the selected cell has a valid URL (contains a full URL scheme). Otherwise, show an alert
