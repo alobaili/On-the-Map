@@ -200,7 +200,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Add Pin" image="icon_addpin" id="WUb-zA-ca5"/>
+                            <barButtonItem title="Add Pin" image="icon_addpin" id="WUb-zA-ca5">
+                                <connections>
+                                    <segue destination="Z60-cA-GjO" kind="show" id="biW-Jw-725"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Refresh" image="icon_refresh" id="Qp1-3R-LEm">
                                 <connections>
                                     <action selector="refreshPressed:" destination="87r-TU-S4d" id="eDV-wl-4jv"/>
@@ -212,6 +216,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnT-4w-iSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2688.4057971014495" y="390.40178571428572"/>
+        </scene>
+        <!--Add Location View Controller-->
+        <scene sceneID="4hs-Li-xPS">
+            <objects>
+                <viewController storyboardIdentifier="AddLocationViewController" id="Z60-cA-GjO" customClass="AddLocationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AL8-es-rdl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="qiT-HS-DuY">
+                                <rect key="frame" x="68" y="216" width="278" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="jVA-dZ-3Xb"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4U-Wf-42X" userLabel="Username Text Field">
+                                <rect key="frame" x="68" y="344" width="278" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="location"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iju-Mp-0eh" userLabel="Password Text Field">
+                                <rect key="frame" x="68" y="382" width="278" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="url"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJl-Wb-RjP">
+                                <rect key="frame" x="68" y="420" width="278" height="30"/>
+                                <color key="backgroundColor" red="0.31518140439999998" green="0.68989342450000002" blue="0.87453550099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sqa-U3-UYb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="leading" secondItem="d4U-Wf-42X" secondAttribute="leading" id="3cj-cb-ybf"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="trailing" secondItem="qiT-HS-DuY" secondAttribute="trailing" id="6J6-Rx-nZh"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="trailing" secondItem="d4U-Wf-42X" secondAttribute="trailing" id="Byw-dR-cxq"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="top" secondItem="d4U-Wf-42X" secondAttribute="bottom" constant="8" id="Le2-wt-c60"/>
+                            <constraint firstItem="d4U-Wf-42X" firstAttribute="top" secondItem="qiT-HS-DuY" secondAttribute="bottom" constant="8" id="TT4-1x-9dh"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="leading" secondItem="qiT-HS-DuY" secondAttribute="leading" id="fsp-Lv-zTi"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="trailing" secondItem="jJl-Wb-RjP" secondAttribute="trailing" id="kT9-IW-UUI"/>
+                            <constraint firstItem="jJl-Wb-RjP" firstAttribute="top" secondItem="Iju-Mp-0eh" secondAttribute="bottom" constant="8" id="lTO-6L-pks"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="leading" secondItem="jJl-Wb-RjP" secondAttribute="leading" id="lqa-Cc-NKM"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="leading" secondItem="Tg5-4O-GZ5" secondAttribute="leading" constant="68" id="vsn-7j-H8c"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="centerX" secondItem="AL8-es-rdl" secondAttribute="centerX" id="vwy-L0-RsB"/>
+                            <constraint firstItem="Iju-Mp-0eh" firstAttribute="top" secondItem="AL8-es-rdl" secondAttribute="top" constant="382" id="xoH-OW-YcO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tg5-4O-GZ5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RsB-bQ-J3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3871" y="30"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gaF-UR-7Bt">
@@ -258,7 +326,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Add Pin" image="icon_addpin" id="V8U-ij-DPp"/>
+                            <barButtonItem title="Add Pin" image="icon_addpin" id="V8U-ij-DPp">
+                                <connections>
+                                    <segue destination="Z60-cA-GjO" kind="show" id="4A1-t4-ZXJ"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Refresh" image="icon_refresh" id="ehM-HG-mwF">
                                 <connections>
                                     <action selector="refreshPressed:" destination="Xg5-NP-M7O" id="OC6-bF-C2D"/>
@@ -281,6 +353,10 @@
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_pin" width="24" height="24"/>
         <image name="icon_refresh" width="24" height="24"/>
+        <image name="icon_world" width="52" height="67"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="biW-Jw-725"/>
+    </inferredMetricsTieBreakers>
 </document>

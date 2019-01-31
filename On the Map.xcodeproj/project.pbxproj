@@ -23,6 +23,7 @@
 		4B3FD05C21F62A6A001B4535 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05B21F62A6A001B4535 /* TableViewController.swift */; };
 		4B3FD06021F8DC61001B4535 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */; };
 		4B6DD86622004F050002EFDD /* StudentLocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6DD86522004F050002EFDD /* StudentLocationsArray.swift */; };
+		4B72539C22027540004D49B1 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72539B22027540004D49B1 /* AddLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		4B3FD05B21F62A6A001B4535 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		4B6DD86522004F050002EFDD /* StudentLocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsArray.swift; sourceTree = "<group>"; };
+		4B72539B22027540004D49B1 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				4B3FD03A21F3489A001B4535 /* LoginViewController.swift */,
 				4B3FD05921F628F1001B4535 /* MapViewController.swift */,
 				4B3FD05B21F62A6A001B4535 /* TableViewController.swift */,
+				4B72539B22027540004D49B1 /* AddLocationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				4B6DD86622004F050002EFDD /* StudentLocationsArray.swift in Sources */,
 				4B09888921FCB8CB00F88ECB /* TableViewCell.swift in Sources */,
 				4B09887921F8F53C00F88ECB /* Udacity.swift in Sources */,
+				4B72539C22027540004D49B1 /* AddLocationViewController.swift in Sources */,
 				4B3FD03B21F3489A001B4535 /* LoginViewController.swift in Sources */,
 				4B09887B21F8FD4A00F88ECB /* GCDBlackBox.swift in Sources */,
 				4B09888221FC89D400F88ECB /* StudentLocations.swift in Sources */,
