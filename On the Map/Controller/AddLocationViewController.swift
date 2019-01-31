@@ -11,4 +11,18 @@ import UIKit
 
 class AddLocationViewController: UIViewController {
     
+    @IBOutlet weak var locationTectField: UITextField!
+    @IBOutlet weak var mediaURLTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    
+    @IBAction func findLocationPressed(_ sender: Any) {
+    }
 }
