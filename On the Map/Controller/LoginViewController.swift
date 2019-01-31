@@ -98,7 +98,7 @@ extension LoginViewController: UITextFieldDelegate {
         }
         // When return is pressed for password, call loginPressed
         if textField == passwordTextField {
-            loginPressed((Any).self)
+            loginPressed(self)
         }
         return true
     }

@@ -20,10 +20,19 @@ class AddLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationTextField.delegate = self
+        mediaURLTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        locationTextField.becomeFirstResponder()
     }
     
     
@@ -70,5 +79,21 @@ class AddLocationViewController: UIViewController {
             let viewController = segue.destination as! ConfirmLocationViewController
             viewController.studentLocation = (sender as! StudentLocation)
         }
+    }
+}
+
+extension AddLocationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // When return is pressed for username, move to the next text field
+        if textField == locationTextField {
+            textField.resignFirstResponder()
+            mediaURLTextField.becomeFirstResponder()
+        }
+        // When return is pressed for password, call loginPressed
+        if textField == mediaURLTextField {
+            findLocationPressed(self)
+        }
+        return true
     }
 }

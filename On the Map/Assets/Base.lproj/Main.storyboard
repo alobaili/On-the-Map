@@ -226,25 +226,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="qiT-HS-DuY">
-                                <rect key="frame" x="68" y="246" width="279" height="120"/>
+                                <rect key="frame" x="68" y="295" width="279" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="jVA-dZ-3Xb"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4U-Wf-42X" userLabel="Username Text Field">
-                                <rect key="frame" x="68" y="374" width="279" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4U-Wf-42X" userLabel="Location Text Field">
+                                <rect key="frame" x="68" y="423" width="279" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="location"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iju-Mp-0eh" userLabel="Password Text Field">
-                                <rect key="frame" x="68" y="412" width="279" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iju-Mp-0eh" userLabel="URL Text Field">
+                                <rect key="frame" x="68" y="461" width="279" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="url"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="continue" textContentType="url"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJl-Wb-RjP">
-                                <rect key="frame" x="68" y="450" width="279" height="30"/>
+                                <rect key="frame" x="68" y="499" width="279" height="30"/>
                                 <color key="backgroundColor" red="0.31518140439999998" green="0.68989342450000002" blue="0.87453550099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Find Location">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -284,6 +284,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="locationTextField" destination="d4U-Wf-42X" id="etn-aI-0qi"/>
                         <outlet property="mediaURLTextField" destination="Iju-Mp-0eh" id="oP5-t3-gBv"/>
@@ -359,20 +360,51 @@
             </objects>
             <point key="canvasLocation" x="2689.8550724637685" y="-336.16071428571428"/>
         </scene>
-        <!--Confirm Location View Controller-->
+        <!--Add Location-->
         <scene sceneID="am0-Dx-sg5">
             <objects>
                 <viewController storyboardIdentifier="ConfirmLocationViewController" id="eNd-QA-24C" customClass="ConfirmLocationViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ToI-ml-OUl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fH7-b6-aeX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-Ss-1fk">
+                                <rect key="frame" x="16" y="816" width="382" height="30"/>
+                                <color key="backgroundColor" red="0.31518140439999998" green="0.68989342450000002" blue="0.87453550099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="FINISH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="findLocationPressed:" destination="Z60-cA-GjO" eventType="touchUpInside" id="xKM-Mo-KNy"/>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DPZ-vJ-0a4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LjU-Kf-6Pa" firstAttribute="bottom" secondItem="K7f-Ss-1fk" secondAttribute="bottom" constant="16" id="2NQ-RR-kv1"/>
+                            <constraint firstItem="fH7-b6-aeX" firstAttribute="leading" secondItem="LjU-Kf-6Pa" secondAttribute="leading" id="II8-r0-ewk"/>
+                            <constraint firstItem="fH7-b6-aeX" firstAttribute="top" secondItem="LjU-Kf-6Pa" secondAttribute="top" id="LqS-Nq-7ZW"/>
+                            <constraint firstItem="fH7-b6-aeX" firstAttribute="trailing" secondItem="LjU-Kf-6Pa" secondAttribute="trailing" id="Rk2-G3-kvL"/>
+                            <constraint firstItem="fH7-b6-aeX" firstAttribute="bottom" secondItem="LjU-Kf-6Pa" secondAttribute="bottom" id="j1G-Py-98t"/>
+                            <constraint firstItem="LjU-Kf-6Pa" firstAttribute="trailing" secondItem="K7f-Ss-1fk" secondAttribute="trailing" constant="16" id="nuL-1d-x0i"/>
+                            <constraint firstItem="K7f-Ss-1fk" firstAttribute="leading" secondItem="LjU-Kf-6Pa" secondAttribute="leading" constant="16" id="tza-Cy-BKL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LjU-Kf-6Pa"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Location" id="V80-O7-zfE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2U2-9N-CY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4349" y="27"/>
+            <point key="canvasLocation" x="4347.826086956522" y="26.785714285714285"/>
         </scene>
     </scenes>
     <resources>
