@@ -83,18 +83,28 @@ class API {
     }
     
     func postLocation(location: StudentLocation, completion: @escaping (_ status: Bool) -> Void) {
-        let url = "https://parse.udacity.com/parse/classes/StudentLocation"
+        var url: String
+        var method: String
+        if location.objectId == "" {
+            url = "https://parse.udacity.com/parse/classes/StudentLocation"
+            method = "POST"
+        } else {
+            url = "https://parse.udacity.com/parse/classes/StudentLocation/\(location.objectId!)"
+            method = "PUT"
+        }
         var params: Data?
         do {
             params = try JSONEncoder().encode(location)
         } catch {
             print(error)
         }
-        request(url: url, method: "POST", parameters: params) { (status, data, error) in
+        request(url: url, method: method, parameters: params) { (status, data, error) in
             guard status else {
+                print("guard failed")
                 completion(false)
                 return
             }
+            print("guard succeeded")
             do {
                 let data = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
                 completion(true)
@@ -104,6 +114,7 @@ class API {
             }
         }
     }
+    
     
     func request(url: String, method: String, parameters: Data? = nil, completion: @escaping (_ status: Bool, _ data: Data?, _ error: String?) -> Void) {
         
