@@ -46,10 +46,10 @@ class ConfirmLocationViewController: UIViewController {
     
     
     @IBAction func finishPressed(_ sender: Any) {
-        guard let studentLocation = studentLocation else {
-            return
-        }
-        API.shared.postLocation(location: studentLocation) { (success) in
+        studentLocation?.firstName = API.shared.firstName
+        studentLocation?.lastName = API.shared.lastName
+        studentLocation?.uniqueKey = API.shared.key
+        API.shared.postLocation(location: studentLocation!) { (success) in
             guard success else{
                 performUIUpdatesOnMain {
                     let alert = UIAlertController(title: "Error", message: "Could't add your location", preferredStyle: .alert)

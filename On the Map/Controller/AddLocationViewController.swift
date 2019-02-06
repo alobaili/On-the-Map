@@ -70,6 +70,8 @@ class AddLocationViewController: UIViewController {
             var studentLocation = studentLocation
             studentLocation.longitude = Double(((marks.first!.location?.coordinate.longitude)!))
             studentLocation.latitude = Double(((marks.first!.location?.coordinate.latitude)!))
+            studentLocation.firstName = ""
+            studentLocation.lastName = ""
             
             self.performSegue(withIdentifier: "toConfirmLocation", sender: studentLocation)
         }

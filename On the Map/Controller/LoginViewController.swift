@@ -54,6 +54,9 @@ class LoginViewController: UIViewController {
                     }
                     return
                 }
+                API.shared.getUserInfo { (status) in
+                    
+                }
                 self.completeLogin()
             }
         }

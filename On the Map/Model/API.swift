@@ -14,6 +14,9 @@ class API {
     
     var key: String = ""
     var id: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var nickname: String = ""
     
     func login(username: String, password: String, completion: @escaping (_ error: String?) -> Void) {
         let params = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
@@ -30,6 +33,8 @@ class API {
                 let accountDictionary = data?["account"] as? [String: Any]
                 self.key = accountDictionary?["key"] as? String ?? ""
                 self.id = sessionDictionary?["id"] as? String ?? ""
+                print("log in successful with user key: \(self.key)")
+                
                 completion(nil)
             } catch {
                 completion("couldn't serialize the object")
@@ -67,18 +72,31 @@ class API {
     }
     
     func getUserInfo(completion: @escaping (_ status: Bool) -> Void) {
-        let url = "https://onthemap-api.udacity.com/v1/\(self.key)"
+        print("Attemting to get user info for key: \(self.key)")
+        
+        let url = "https://onthemap-api.udacity.com/v1/users/\(self.key)"
+        
         request(url: url, method: "GET") { (status, data, error) in
             guard status else {
+                print("getUserInfo failed with error: \(error!)")
                 return
             }
             let newData = data?.subdata(in: 5..<data!.count)
             do {
-                let object = try JSONSerialization.jsonObject(with: newData!, options: [])
+                let object = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as? [String : Any]
+                self.nickname = object?["nickname"] as? String ?? ""
+                var components = self.nickname.components(separatedBy: " ")
+                self.firstName = components.removeFirst()
+                self.lastName = components.joined(separator: " ")
+                
                 completion(true)
             } catch {
                 completion(false)
             }
+            print("User info retrieved successfully:")
+            print("Nickname: \(self.nickname)")
+            print("First Name: \(self.firstName)")
+            print("Last Name: \(self.lastName)")
         }
     }
     
@@ -86,10 +104,21 @@ class API {
         var url: String
         var method: String
         if location.objectId == "" {
+            print("Attempting to post a new location with the following data:")
+            print("Unique Key: \(location.uniqueKey!)")
+            print("First Name: \(location.firstName!)")
+            print("Last Name: \(location.lastName!)")
+            print("Map String: \(location.mapString!)")
+            print(("Media URL: \(location.mediaURL!)"))
+            print(("Latitude: \(location.latitude!)"))
+            print(("Longitude: \(location.longitude!)"))
+            
             url = "https://parse.udacity.com/parse/classes/StudentLocation"
             method = "POST"
         } else {
-            url = "https://parse.udacity.com/parse/classes/StudentLocation/\(location.objectId!)"
+            print("Attempting to update current location with object ID: \(String(describing: location.objectId))")
+            
+            url = "https://parse.udacity.com/parse/classes/StudentLocation/\(String(describing: location.objectId))"
             method = "PUT"
         }
         var params: Data?
@@ -100,13 +129,12 @@ class API {
         }
         request(url: url, method: method, parameters: params) { (status, data, error) in
             guard status else {
-                print("guard failed")
+                print("postLocation failed with error: \(error!)")
                 completion(false)
                 return
             }
-            print("guard succeeded")
             do {
-                let data = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+                let data = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                 completion(true)
             } catch {
                 print(error)
@@ -139,10 +167,12 @@ class API {
         request.httpBody = parameters
         request.httpMethod = method
         
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let response = response as? HTTPURLResponse,
-                let data = data, (response.statusCode >= 200 && response.statusCode < 300) else {
-                    completion(false, nil, "Network error")
+            let response = response as? HTTPURLResponse
+            guard (response != nil),
+                let data = data, ((response?.statusCode)! >= 200 && (response?.statusCode)! < 300) else {
+                    completion(false, nil, "Response status code: \(response!.statusCode)")
                     return
             }
             completion(true, data, nil)
