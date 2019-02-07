@@ -122,11 +122,12 @@ class API {
             method = "PUT"
         }
         var params: Data?
-        do {
-            params = try JSONEncoder().encode(location)
-        } catch {
-            print(error)
-        }
+        params = "{\"uniqueKey\": \"\(API.shared.key)\", \"firstName\": \"\(location.firstName ?? "")\", \"lastName\": \"\(location.lastName ?? "")\",\"mapString\": \"\(location.mapString ?? "")\", \"mediaURL\": \"\(location.mediaURL ?? "")\",\"latitude\": \(location.latitude ?? 0), \"longitude\": \(location.longitude ?? 0)}".data(using: .utf8)
+//        do {
+//            params = try JSONEncoder().encode(location)
+//        } catch {
+//            print(error)
+//        }
         request(url: url, method: method, parameters: params) { (status, data, error) in
             guard status else {
                 print("postLocation failed with error: \(error!)")

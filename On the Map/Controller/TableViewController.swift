@@ -20,6 +20,12 @@ class TableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.tabBar.isHidden = false
+        
+        //clear the array
+        studentLocations.removeAll()
+        self.tableView.reloadData()
+        
         API.shared.getLocations { (locations) in
             self.studentLocations = locations!
             
@@ -44,9 +50,9 @@ class TableViewController: UITableViewController {
     
     @IBAction func refreshPressed(_ sender: Any) {
         
-        //clear the local and shared arrays
+        //clear the array
         studentLocations.removeAll()
-        StudentLocationsArray.shared.studentLocationsArray.removeAll()
+        self.tableView.reloadData()
         
         
         API.shared.getLocations { (locations) in

@@ -39,11 +39,6 @@ class ConfirmLocationViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = false
-    }
-    
     
     @IBAction func finishPressed(_ sender: Any) {
         studentLocation?.firstName = API.shared.firstName
@@ -60,7 +55,9 @@ class ConfirmLocationViewController: UIViewController {
                 }
                 return
             }
-            self.navigationController?.popToRootViewController(animated: true)
+            performUIUpdatesOnMain {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
 }

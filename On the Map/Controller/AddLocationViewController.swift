@@ -54,6 +54,7 @@ class AddLocationViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
+        ActivityIndicator.startActivityIndicator(view: self.view)
         let studentLocation = StudentLocation.init(createdAt: "", firstName: nil, lastName: nil, latitude: 0, longitude: 0, mapString: location, mediaURL: mediaURL, objectId: "", uniqueKey: "", updatedAt: "")
         
         let geocoder = CLGeocoder()
@@ -73,6 +74,7 @@ class AddLocationViewController: UIViewController {
             studentLocation.firstName = ""
             studentLocation.lastName = ""
             
+            ActivityIndicator.stopActivityIndicator()
             self.performSegue(withIdentifier: "toConfirmLocation", sender: studentLocation)
         }
     }

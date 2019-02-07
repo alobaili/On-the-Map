@@ -24,6 +24,7 @@
 		4B3FD06021F8DC61001B4535 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */; };
 		4B6DD86622004F050002EFDD /* StudentLocationsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6DD86522004F050002EFDD /* StudentLocationsArray.swift */; };
 		4B72539C22027540004D49B1 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72539B22027540004D49B1 /* AddLocationViewController.swift */; };
+		4B8869FE220C94BD001A6ACD /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8869FD220C94BD001A6ACD /* ActivityIndicator.swift */; };
 		4B893D9D2203ADAA00B1EB61 /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B893D9C2203ADAA00B1EB61 /* ConfirmLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		4B3FD05F21F8DC61001B4535 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		4B6DD86522004F050002EFDD /* StudentLocationsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsArray.swift; sourceTree = "<group>"; };
 		4B72539B22027540004D49B1 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		4B8869FD220C94BD001A6ACD /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		4B893D9C2203ADAA00B1EB61 /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				4B3FD04C21F62526001B4535 /* Model */,
 				4B3FD03821F3489A001B4535 /* AppDelegate.swift */,
 				4B09887A21F8FD4A00F88ECB /* GCDBlackBox.swift */,
+				4B8869FD220C94BD001A6ACD /* ActivityIndicator.swift */,
 			);
 			path = "On the Map";
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				4B3FD04B21F6186B001B4535 /* ParseConstants.swift in Sources */,
 				4B3FD05C21F62A6A001B4535 /* TableViewController.swift in Sources */,
 				4B09887D21F9028E00F88ECB /* UdacityConstants.swift in Sources */,
+				4B8869FE220C94BD001A6ACD /* ActivityIndicator.swift in Sources */,
 				4B3FD06021F8DC61001B4535 /* StudentLocation.swift in Sources */,
 				4B3FD05A21F628F1001B4535 /* MapViewController.swift in Sources */,
 				4B893D9D2203ADAA00B1EB61 /* ConfirmLocationViewController.swift in Sources */,
