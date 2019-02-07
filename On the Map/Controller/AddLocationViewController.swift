@@ -18,6 +18,7 @@ class AddLocationViewController: UIViewController {
     var longitude: Double?
     var latitude: Double?
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +42,7 @@ class AddLocationViewController: UIViewController {
         locationTextField.becomeFirstResponder()
     }
     
+    // MARK: Actions
     
     @IBAction func findLocationPressed(_ sender: Any) {
         guard let location = locationTextField.text,
@@ -91,6 +93,8 @@ class AddLocationViewController: UIViewController {
         }
     }
 }
+
+// MARK: - Text Field Delegate
 
 extension AddLocationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

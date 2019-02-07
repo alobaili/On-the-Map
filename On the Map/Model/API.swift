@@ -12,12 +12,14 @@ class API {
     static let shared = API()
     private init() {}
     
+    // Shared instance
     var key: String = ""
     var id: String = ""
     var firstName: String = ""
     var lastName: String = ""
     var nickname: String = ""
     
+    // MARK: Login
     func login(username: String, password: String, completion: @escaping (_ error: String?) -> Void) {
         let params = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
         let url = "https://onthemap-api.udacity.com/v1/session"
@@ -31,17 +33,20 @@ class API {
                 let data = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments)  as? [String: Any]
                 let sessionDictionary = data?["session"] as? [String: Any]
                 let accountDictionary = data?["account"] as? [String: Any]
+                
+                // if the unique key or session id exist, save it in the shared instance
                 self.key = accountDictionary?["key"] as? String ?? ""
                 self.id = sessionDictionary?["id"] as? String ?? ""
                 print("log in successful with user key: \(self.key)")
-                
                 completion(nil)
+                
             } catch {
                 completion("couldn't serialize the object")
             }
         }
     }
     
+    // MARK: Logout
     func logout(completion: @escaping (_ status: Bool) -> Void) {
         let url = "https://onthemap-api.udacity.com/v1/session"
         
@@ -54,6 +59,7 @@ class API {
         }
     }
     
+    // MARK: Get student locations
     func getLocations(limit: Int = 100, skip: Int = 0, orderBy: String = "updatedAt", completion: @escaping ([StudentLocation]?) -> Void) {
         let url = "https://parse.udacity.com/parse/classes/StudentLocation?limit=\(limit)&skip=\(skip)&order=-\(orderBy)"
         
@@ -71,6 +77,7 @@ class API {
         }
     }
     
+    // MARK: Get user information
     func getUserInfo(completion: @escaping (_ status: Bool) -> Void) {
         print("Attemting to get user info for key: \(self.key)")
         
@@ -100,6 +107,7 @@ class API {
         }
     }
     
+    // MARK: Post a student location
     func postLocation(location: StudentLocation, completion: @escaping (_ status: Bool) -> Void) {
         var url: String
         var method: String
@@ -123,11 +131,7 @@ class API {
         }
         var params: Data?
         params = "{\"uniqueKey\": \"\(API.shared.key)\", \"firstName\": \"\(location.firstName ?? "")\", \"lastName\": \"\(location.lastName ?? "")\",\"mapString\": \"\(location.mapString ?? "")\", \"mediaURL\": \"\(location.mediaURL ?? "")\",\"latitude\": \(location.latitude ?? 0), \"longitude\": \(location.longitude ?? 0)}".data(using: .utf8)
-//        do {
-//            params = try JSONEncoder().encode(location)
-//        } catch {
-//            print(error)
-//        }
+
         request(url: url, method: method, parameters: params) { (status, data, error) in
             guard status else {
                 print("postLocation failed with error: \(error!)")
@@ -135,7 +139,7 @@ class API {
                 return
             }
             do {
-                let data = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                _ = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                 completion(true)
             } catch {
                 print(error)
@@ -144,11 +148,12 @@ class API {
         }
     }
     
-    
+    // MARK: Request (reusable)
     func request(url: String, method: String, parameters: Data? = nil, completion: @escaping (_ status: Bool, _ data: Data?, _ error: String?) -> Void) {
         
         var request = URLRequest(url: URL(string: url)!)
         
+        // If the method is DELETE, setup the delete session request
         if method == "DELETE" {
             var xsrfCookie: HTTPCookie? = nil
             let sharedCookieStorage = HTTPCookieStorage.shared
@@ -158,7 +163,7 @@ class API {
             if let xsrfCookie = xsrfCookie {
                 request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
             }
-        } else {
+        } else { // for requests other than deleting a session
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")

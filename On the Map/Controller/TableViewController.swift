@@ -12,6 +12,8 @@ import SafariServices
 class TableViewController: UITableViewController {
     
     var studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
+    
+    // MARK: Life Cycle
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,8 @@ class TableViewController: UITableViewController {
             }
         }
     }
+    
+    // MARK: Actions
     
     @IBAction func logoutPressed(_ sender: Any) {
         API.shared.logout { (status) in
@@ -70,6 +74,8 @@ class TableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Manage table contents
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentLocations.count
     }
@@ -104,6 +110,7 @@ class TableViewController: UITableViewController {
         return 99.5
     }
     
+    // MARK: - Helper methods
     private func verifyURL(urlString: String?) -> Bool {
         //Check for nil
         if let urlString = urlString {

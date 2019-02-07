@@ -18,6 +18,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,39 +32,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         reloadAnnotations()
     }
     
-    func reloadAnnotations() {
-        studentLocations.removeAll()
-        studentAnnotations.removeAll()
-        let currentAnnotations = self.mapView.annotations
-        self.mapView.removeAnnotations(currentAnnotations)
-        
-        API.shared.getLocations { (locations) in
-            self.studentLocations = locations! as [StudentLocation]
-            
-            for location in self.studentLocations where location.latitude != nil && location.longitude != nil {
-                
-                let lat = CLLocationDegrees(location.latitude!)
-                let long = CLLocationDegrees(location.longitude!)
-                
-                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                
-                let firstName = location.firstName
-                let lastName = location.lastName
-                let mediaURL = location.mediaURL
-                
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = "\(String(describing: firstName)) \(String(describing: lastName))"
-                annotation.subtitle = mediaURL
-                
-                self.studentAnnotations.append(annotation)
-            }
-            
-            performUIUpdatesOnMain {
-                self.mapView.addAnnotations(self.studentAnnotations)
-            }
-        }
-    }
+    // MARK: Actions
     
     @IBAction func logoutPressed(_ sender: Any) {
         API.shared.logout { (status) in
@@ -118,6 +88,42 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let url = URL(string: urlString!)
             let svc = SFSafariViewController(url: url!)
             present(svc, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - Helper methods
+    
+    func reloadAnnotations() {
+        studentLocations.removeAll()
+        studentAnnotations.removeAll()
+        let currentAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(currentAnnotations)
+        
+        API.shared.getLocations { (locations) in
+            self.studentLocations = locations! as [StudentLocation]
+            
+            for location in self.studentLocations where location.latitude != nil && location.longitude != nil {
+                
+                let lat = CLLocationDegrees(location.latitude!)
+                let long = CLLocationDegrees(location.longitude!)
+                
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                let firstName = location.firstName
+                let lastName = location.lastName
+                let mediaURL = location.mediaURL
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(String(describing: firstName)) \(String(describing: lastName))"
+                annotation.subtitle = mediaURL
+                
+                self.studentAnnotations.append(annotation)
+            }
+            
+            performUIUpdatesOnMain {
+                self.mapView.addAnnotations(self.studentAnnotations)
+            }
         }
     }
     

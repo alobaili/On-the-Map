@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
@@ -77,19 +78,13 @@ class LoginViewController: UIViewController {
             self.present(controller, animated: true, completion: nil)
         }
     }
-    
-    // MARK: Display error
-    private func displayError(_ errorString: String?) {
-        if let errorString = errorString {
-            print(errorString) // just print it in the console for now
-        }
-    }
 
 
 }
 
 
-// MARK: Text Field Delegate
+// MARK: - Text Field Delegate
+
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

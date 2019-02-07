@@ -16,6 +16,8 @@ class ConfirmLocationViewController: UIViewController {
     var studentLocation: StudentLocation?
     var annotation : MKPointAnnotation?
     
+    // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -39,6 +41,7 @@ class ConfirmLocationViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
     }
     
+    // MARK: Actions
     
     @IBAction func finishPressed(_ sender: Any) {
         studentLocation?.firstName = API.shared.firstName
