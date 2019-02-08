@@ -25,7 +25,15 @@ class TableViewController: UITableViewController {
         self.tableView.reloadData()
         
         API.shared.getLocations { (locations) in
-            self.studentLocations = locations!
+            
+            // make sure locations contains a value
+            guard locations != nil else {
+                return
+            }
+            
+            // we can now safely force unwrap locations and assign it to
+            // self.studentLocations
+            self.studentLocations = locations! as [StudentLocation]
             
             performUIUpdatesOnMain {
                 self.tableView.reloadData()
