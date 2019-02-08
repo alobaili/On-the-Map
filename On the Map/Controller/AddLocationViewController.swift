@@ -69,6 +69,7 @@ class AddLocationViewController: UIViewController {
                     return
                 }))
                 self.present(alert, animated: true, completion: nil)
+                ActivityIndicator.stopActivityIndicator()
                 return
             }
             
