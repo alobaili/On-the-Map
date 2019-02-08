@@ -14,10 +14,6 @@ class TableViewController: UITableViewController {
     var studentLocations = StudentLocationsArray.shared.studentLocationsArray as! [StudentLocation]
     
     // MARK: Life Cycle
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -106,9 +102,6 @@ class TableViewController: UITableViewController {
         present(svc, animated: true, completion: nil)
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 99.5
-//    }
     
     // MARK: - Helper methods
     private func verifyURL(urlString: String?) -> Bool {
