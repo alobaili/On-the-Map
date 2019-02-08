@@ -40,9 +40,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             performUIUpdatesOnMain {
-                let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                
-                self.present(controller, animated: true, completion: nil)
+                self.tabBarController?.dismiss(animated: true, completion: nil)
             }
         }
     }
