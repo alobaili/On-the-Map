@@ -109,13 +109,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                 
-                let firstName = location.firstName
-                let lastName = location.lastName
+
                 let mediaURL = location.mediaURL
                 
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
-                annotation.title = "\(String(describing: firstName)) \(String(describing: lastName))"
+                if let firstName = location.firstName, let lastName = location.lastName {
+                    annotation.title = "\(firstName) \(lastName)"
+                }
                 annotation.subtitle = mediaURL
                 
                 self.studentAnnotations.append(annotation)
