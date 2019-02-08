@@ -98,8 +98,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.removeAnnotations(currentAnnotations)
         
         API.shared.getLocations { (locations) in
+            
+            // make sure locations contains a value
+            guard locations != nil else {
+                return
+            }
+            // we can now safely force unwrap locations and assign it to
+            // self.studentLocations
             self.studentLocations = locations! as [StudentLocation]
             
+            // Set up and present student location annotations
             for location in self.studentLocations where location.latitude != nil && location.longitude != nil {
                 
                 let lat = CLLocationDegrees(location.latitude!)
@@ -112,9 +120,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
+                
                 if let firstName = location.firstName, let lastName = location.lastName {
                     annotation.title = "\(firstName) \(lastName)"
                 }
+                
                 annotation.subtitle = mediaURL
                 
                 self.studentAnnotations.append(annotation)
