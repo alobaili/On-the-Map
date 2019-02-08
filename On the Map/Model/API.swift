@@ -177,12 +177,16 @@ class API {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             let response = response as? HTTPURLResponse
             
+            // this guard is to fix a crash caused if there is no internet connection
             guard response != nil else {
                 completion(false, nil, "There is a problem with the internet connection")
                 return
             }
             
             guard let data = data, ((response?.statusCode)! >= 200 && (response?.statusCode)! < 300) else {
+                
+                // statusCode 403 Forbidden in this context probably means the username
+                // or password is not correct.
                 if (response?.statusCode)! == 403 {
                     completion(false, nil, "Wrong username or password")
                     return
