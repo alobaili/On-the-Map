@@ -85,7 +85,7 @@ class AddLocationViewController: UIViewController {
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     
