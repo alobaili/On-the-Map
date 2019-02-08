@@ -25,7 +25,7 @@ class API {
         let url = "https://onthemap-api.udacity.com/v1/session"
         request(url: url, method: "POST", parameters: params) { (status, data, error) in
             guard status else {
-                completion("incorrect username or password")
+                completion(error)
                 return
             }
             do {
@@ -176,11 +176,22 @@ class API {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             let response = response as? HTTPURLResponse
-            guard (response != nil),
-                let data = data, ((response?.statusCode)! >= 200 && (response?.statusCode)! < 300) else {
+            
+            guard response != nil else {
+                completion(false, nil, "There is a problem with the internet connection")
+                return
+            }
+            
+            guard let data = data, ((response?.statusCode)! >= 200 && (response?.statusCode)! < 300) else {
+                if (response?.statusCode)! == 403 {
+                    completion(false, nil, "Wrong username or password")
+                    return
+                } else {
                     completion(false, nil, "Response status code: \(response!.statusCode)")
                     return
+                }
             }
+            
             completion(true, data, nil)
         }.resume()
     }
