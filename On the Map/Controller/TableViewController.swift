@@ -106,9 +106,9 @@ class TableViewController: UITableViewController {
         present(svc, animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 99.5
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 99.5
+//    }
     
     // MARK: - Helper methods
     private func verifyURL(urlString: String?) -> Bool {
