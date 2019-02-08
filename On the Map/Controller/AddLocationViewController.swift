@@ -49,11 +49,13 @@ class AddLocationViewController: UIViewController {
         let mediaURL = mediaURLTextField.text,
         location != "",
         mediaURL != "" else {
-            let alert = UIAlertController(title: "Required field", message: "Please fill both the location and URL", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                return
-            }))
-            self.present(alert, animated: true, completion: nil)
+            performUIUpdatesOnMain {
+                let alert = UIAlertController(title: "Required field", message: "Please fill both the location and URL", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    return
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
             return
         }
         ActivityIndicator.startActivityIndicator(view: self.view)
