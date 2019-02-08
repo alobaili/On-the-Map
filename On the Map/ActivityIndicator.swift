@@ -20,13 +20,11 @@ struct ActivityIndicator {
         activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.5)
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
     }
     
     
     static func stopActivityIndicator(){
         activityIndicator.stopAnimating()
-        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
 }
